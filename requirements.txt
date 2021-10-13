@@ -1,0 +1,7 @@
+Flask_MySQLdb==0.2.0
+Flask==1.1.2
+mysql_connector_repackaged==0.3.1
+gunicorn
+mysql-connector-python
+socket
+json
