@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Site 1</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="60">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            background-image: url("https://wallpapercave.com/uwp/uwp1338511.jpeg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            background-image: url("https://raw.githubusercontent.com/Atharv-Chaudhari/Simple-MySql-Editor/3565ab8216aa8c389b946e426fed899aeb3426ea/back.jpg");
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="text-align:center;">Site 1</h1>
+        <h2 style="text-align:center;color:#800000;">To Pass Data to Site 2</h2>
+        <div style="text-align:center;">
+            <a href="/site1_work"><input type="submit" value="Send Temp 1"></a>
+        </div>
+        <h2 style="text-align:center;color:#800000;">To Receive Data From Site 2</h2>
+        <div style="text-align:center;">
+            <a href="/">
+                <button class="button button2">
+                    Receive Data
+                </button>
+            </a>
+        </div>
+        {% if n!=0 %}
+        <h2 style="text-align: center;color:#0000CD;">Current Database Structure</h2>
+        {% endif %}
+        {% for k in range(n) %}
+        <h3 style="text-align: center;color:red;">{{table[k][0]}}</h3>
+        <table style="max-width:70%;text-align:center;margin-left: auto;margin-right: auto;">
+            <tr>
+                {% for j in column[k] %}
+                <th style="text-align: center;">{{j[0]}}</th>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for i in data[k] %}
+            <tr>
+                {% for x in i %}
+                <td style="text-align: center;">{{x}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            </tr>
+        </table>
+        {% endfor %}
+        <br>
+        {% if(temp) %}
+        <h2 style="text-align: center;color:#0000CD;">Received Data</h2>
+        <table style="max-width:70%;text-align:center;margin-left: auto;margin-right: auto;">
+            <tr>
+                {% for k in temp.keys() %}
+                <th style="text-align: center;">{{k}}</th>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for j in range(lop) %}
+            <tr>
+                {% for i in temp.keys() %}
+                <td style="text-align: center;">{{temp[i][j]}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+        <br>
+        {% if(result) %}
+        <h2 style="text-align: center;color:#0000CD;">Result Semi Joined Data</h2>
+        <table style="max-width:70%;text-align:center;margin-left: auto;margin-right: auto;">
+            <tr>
+                {% for k in poss %}
+                <th style="text-align: center;">{{k}}</th>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for j in result %}
+            <tr>
+                {% for i in range(num) %}
+                <td style="text-align: center;">{{j[i]}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+        <h5 style="text-align:center;color:#800000;">When Site 2 Sends Data, Data Will be Received Automatically If You will Not Press Received After 60 Seconds</h5>
+        <div style="text-align:center;">
+            <a href="/">
+                <button class="button button2">
+                    Home
+                </button>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
